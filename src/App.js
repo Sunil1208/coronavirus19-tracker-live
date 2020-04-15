@@ -10,6 +10,7 @@ class App extends React.Component{
         super(props);
         this.state = {
             data : {},
+            country: '',
         }
     }
     
@@ -21,13 +22,28 @@ class App extends React.Component{
             data: fetchedData
         });
     }
+
+    handleCountryChange = async (country) => {
+        //console.log(country)
+        const fetchedData = await fetchData(country);
+        console.log(fetchedData)
+
+        this.setState({
+            data: fetchedData,
+            country: country
+        });
+        //Task
+        //1.Fetch the data
+        //2.Set the state
+    }
+
     render(){
-        const {data} = this.state;
+        const {data, country} = this.state;
         return(
             <div className={styles.container}>
                 <Cards data={data}/>
-                <CountryPicker/>
-                <Chart/>
+                <CountryPicker handleCountryChange={this.handleCountryChange}/>
+                <Chart data={data} country={country}/>
             </div>
         )
     }
