@@ -9,14 +9,14 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}}) => {
         return 'Loading.....'
     }
     
-    const date = new Date(lastUpdate);
-    const options = {
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
-      };
-      const timeString = date.toLocaleString('en-US', options);
-      console.log(`Time obtained is ${timeString}`)
+    // const date = new Date(lastUpdate);
+    // const options = {
+    //     hour: 'numeric',
+    //     minute: 'numeric',
+    //     hour12: true
+    //   };
+    //   const timeString = date.toLocaleString('en-US', options);
+    //   console.log(`Time obtained is ${timeString}`)
     //console.log(confirmed)
     return (
         <div className= {styles.container}>
@@ -27,7 +27,7 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}}) => {
                         <Typography variant="h5">
                         <CountUp start = {0} end = {confirmed.value} duration={2.5} separator=","/>
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()} {timeString}</Typography>
+                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
@@ -37,7 +37,7 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}}) => {
                         <Typography variant="h5">
                         <CountUp start = {0} end = {recovered.value} duration={2.5} separator=","/>
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()} {timeString}</Typography>
+                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()} </Typography>
                         <Typography variant="body2">Number of recoveries from COVID-19</Typography>
                     </CardContent>
                 </Grid>
@@ -47,7 +47,7 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}}) => {
                         <Typography variant="h5">
                         <CountUp start = {0} end = {deaths.value} duration={2.5} separator=","/>
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()} {timeString}</Typography>
+                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant="body2">Number of deaths from COVID-19</Typography>
                     </CardContent>
                 </Grid>
